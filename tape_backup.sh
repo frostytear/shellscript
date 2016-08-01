@@ -16,16 +16,4 @@ echo "     Final do Backup     "  >> $LOG
 # término do backup para a fita dat
 
 # envia email
-mail -s "Backup Fita DAT"  "btougeiro@inmetro.rs.gov.br" << FIMMAIL
-
-Relatório do backup
-
-Status ATUAL DO DISCO
-
-`df -h`
-
-Relatório - Backup dos ARQUIVOS para Case USB -
-
-`cat /var/log/$FILE.log`
-
-FIMMAIL
+mail -s "Backup Fita DAT"  "btougeiro@inmetro.rs.gov.br" < $LOG
