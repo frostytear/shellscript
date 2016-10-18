@@ -41,7 +41,7 @@ function identifica_pendrive(){
 function monta_pendrive(){
   sudo /usr/bin/umount $device
   if [ -d ~/backup ]; then
-    sudo mount -o rw,uid=$(id -u),gid=$(id -g),fmask=0022,dmask=0022,iocharset=iso8859-1,shortname=mixed,errors=remount-ro "${device}" ~/backup 2>/dev/null
+    sudo mount "${device}" ~/backup
     if [ $? -eq 1 ]; then
       echo "Erro ao montar pendrive" 
       exit 1
@@ -52,7 +52,7 @@ function monta_pendrive(){
       echo "Erro ao criar diretorio ~/backup" 
       exit 1
     fi
-    sudo mount -o rw,uid=$(id -u),gid=$(id -g),fmask=0022,dmask=0022,iocharset=iso8859-1,shortname=mixed,errors=remount-ro "${device}" ~/backup 2>/dev/null
+    sudo mount "${device}" ~/backup
     if [ $? -eq 1 ]; then
       echo "Erro ao montar pendrive" 
       exit 1
@@ -62,7 +62,7 @@ function monta_pendrive(){
 
 function desmonta_pendrive(){
   echo "Removendo pendrive"
-  sudo /usr/bin/umount ~/backup 2>/dev/null
+  sudo /usr/bin/umount ~/backup
   if [ $? -eq 1 ]; then
     echo "Erro ao remover pendrive" 
   else
